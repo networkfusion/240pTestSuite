@@ -28,13 +28,18 @@ jobs:
         gcc cfile.c -lz -o cfile
         ls
 
-    - uses: docker://devkitpro/devkitppc:latest
-    - name: Build ROM
-      run: |
-        pwd
-        export PATH="$PATH:$DEVKITPPC/bin"
-        cd ./240psuite/Wii/240pSuite
-        make -f Makefile.gc
+    - name: Build ROM Docker 
+      uses: docker://devkitpro/devkitppc:latest
+      with:
+        entrypoint: make
+        args: -f Makefile.gc
+
+    # - name: Build ROM
+    #   run: |
+    #     pwd
+    #     export PATH="$PATH:$DEVKITPPC/bin"
+    #     cd ./240psuite/Wii/240pSuite
+    #     make -f Makefile.gc
 
     - name: "Upload built ROMs to artifacts"
       uses: actions/upload-artifact@v2
