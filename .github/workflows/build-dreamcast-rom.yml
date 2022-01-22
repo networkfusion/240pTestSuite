@@ -12,18 +12,24 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
 
-    - name: Build ROM
+    - name: Install DreamSDK
       run: |
-        #TODO: install SDK
-        # presuming https://www.dreamsdk.org/
-        cd ${{ github.workspace }}/240psuite/Dreamcast/PVR/
+        # Download SDK
+        curl -L https://www.dreamsdk.org/download/ --output DreamSDK-R2-Setup.exe
+        # Install SDK silently
+        .\DreamSDK-R2-Setup.exe /s
+
+
+    - name: Build ROM
+      working-directory: ${{ github.workspace }}/240psuite/Dreamcast/PVR/
+      run: |
         make
 
     - name: "Upload built ROMs to artifacts"

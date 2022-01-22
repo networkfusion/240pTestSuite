@@ -12,6 +12,7 @@ on:
 
 jobs:
   build:
+    if: ${{ false }}  # disable for now as unworking prototype.
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +20,15 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Build ROM
+    - name: Install SDK
       run: |
-        cd ${{ github.workspace }}/240psuite/Saturn/240psuite/
+        echo "TODO: this is currently based on libyaul, but is in an unworking state."
+
+    - name: Build ROM
+      working-directory: ${{ github.workspace }}/240psuite/Saturn/240psuite/
+      env:
+        INSTALL_ROOT: ${{ github.workspace }}/sdk
+      run: |
         make
 
     - name: "Upload built ROMs to artifacts"

@@ -22,14 +22,14 @@ jobs:
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
-        repository: jbrandwood/huc
+        repository: ArtemioUrbina/huc
         path: sdk
         fetch-depth: 0
 
     - name: Build ROM
+      working-directory: ${{ github.workspace }}/240psuite/PCE/
       run: |
         # TODO: Use SDK
-        cd ${{ github.workspace }}/240psuite/PCE/
         make.bat
 
     - name: "Upload built ROMs to artifacts"
