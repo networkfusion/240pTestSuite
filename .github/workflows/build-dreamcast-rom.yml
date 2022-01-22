@@ -26,7 +26,7 @@ jobs:
         curl -L https://www.dreamsdk.org/download/ --output DreamSDK-R2-Setup.exe
         ls
         # Install SDK silently (what are the proper prameters?!)
-        .\DreamSDK-R2-Setup.exe /s /q
+        .\DreamSDK-R2-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES
 
     - name: Install patches
       run: |
