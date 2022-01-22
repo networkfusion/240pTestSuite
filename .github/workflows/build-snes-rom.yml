@@ -24,8 +24,13 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ArtemioUrbina/pvsneslib-240ptestsuite-fork
-        path: 240psuite/SNES/snesSDK
+        path: 240psuite/SNES/snesSDK/
         fetch-depth: 0
+
+    - name: Check SDK install DIR
+      working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/
+      run: |
+        ls
 
     - name: Build ROM
       shell: cmd
