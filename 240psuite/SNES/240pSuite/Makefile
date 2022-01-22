@@ -1,11 +1,11 @@
 # path to snesdev root directory (for emulators, devkitsnes, libsnes)
-export DEVKITSNES := /c/snesdev/
+DEVKITSNES ?= /c/snesdev/
 
 # path to devkitsnes root directory for compiler
-export DEVKIT65XX := /c/snesdev/devkitsnes
+DEVKIT65XX ?= /c/snesdev/devkitsnes
 
-export CHNGREG	:=	$(DEVKIT65XX)/tools/changeregion
-export UCON64	:=	$(DEVKIT65XX)/tools/ucon64
+export CHNGREG	?=	$(DEVKIT65XX)/tools/changeregion
+export UCON64	?=	$(DEVKIT65XX)/tools/ucon64
 
 #---------------------------------------------------------------------------------
 .SUFFIXES:
