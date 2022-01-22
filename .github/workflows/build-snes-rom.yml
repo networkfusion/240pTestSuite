@@ -31,12 +31,14 @@ jobs:
       working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/
       run: |
         ls
+        cd ./devkitsnes
+        ls
 
     - name: Build ROM
       shell: cmd
       working-directory: ${{ github.workspace }}/240psuite/SNES/240pSuite/
       env:
-        DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/snesSDK
+        DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/snesSDK/
         DEVKIT65XX: D:/a/240pTestSuite/240pTestSuite/240psuite/snesSDK/devkitsnes
       run: |
         make
