@@ -19,17 +19,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
-        repository: alekmaul/pvsneslib
-        path: sdk
+        repository: ArtemioUrbina/pvsneslib-240ptestsuite-fork
+        path: 240psuite/SNES/snesSDK
         fetch-depth: 0
 
     - name: Build ROM
+      shell: cmd
+      working-directory: ${{ github.workspace }}/240psuite/SNES/240pSuite/
+      env:
+        DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/snesSDK
+        DEVKIT65XX: D:/a/240pTestSuite/240pTestSuite/240psuite/snesSDK/devkitsnes
       run: |
-        # TODO: Alter paths to use SDK:
-        cd ${{ github.workspace }}/240psuite/SNES/240pSuite
         make
 
     - name: "Upload built ROMs to artifacts"

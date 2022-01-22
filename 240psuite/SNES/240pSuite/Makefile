@@ -1,3 +1,5 @@
+!!!
+
 # path to snesdev root directory (for emulators, devkitsnes, libsnes)
 export DEVKITSNES := /c/snesdev/
 

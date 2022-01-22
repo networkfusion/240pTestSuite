@@ -12,6 +12,7 @@ on:
 
 jobs:
   build:
+    if: ${{ false }}  # disable for now as unworking.
     runs-on: windows-latest
 
     steps:
@@ -31,12 +32,13 @@ jobs:
         curl -L https://www.dreamsdk.org/download/ --output DreamSDK-R2-Setup.exe
         
         # Install SDK silently
+        echo "silent install of SDK starting..."
         .\DreamSDK-R2-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES | Out-Host
+        echo "silent install of SDK finished."
 
     - name: Install patches
       run: |
-        # We also need http://www.fftw.org/download.html and a patch as outlined in the fftw dir!
-        ls
+        echo "We also need http://www.fftw.org/download.html and a patch as outlined in the fftw dir!"
 
 
     - name: Build ROM
