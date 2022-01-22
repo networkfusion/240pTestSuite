@@ -25,8 +25,9 @@ jobs:
         # Download SDK
         curl -L https://www.dreamsdk.org/download/ --output DreamSDK-R2-Setup.exe
         ls
-        # Install SDK silently (what are the proper prameters?!)
-        .\DreamSDK-R2-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES
+        # Install SDK silently (what are the proper prameters?!) perhaps https://dreamcast.wiki/Using_Ruby_for_Sega_Dreamcast_development will help instead?
+        # or https://github.com/yujiyokoo/dreampresent
+        .\DreamSDK-R2-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES | Out-Null
 
     - name: Install patches
       run: |
