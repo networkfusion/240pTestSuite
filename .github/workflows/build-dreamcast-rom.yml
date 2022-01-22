@@ -23,8 +23,9 @@ jobs:
       run: |
         # Download SDK
         curl -L https://www.dreamsdk.org/download/ --output DreamSDK-R2-Setup.exe
+        ls
         # Install SDK silently
-        .\DreamSDK-R2-Setup.exe /s
+        & 'DreamSDK-R2-Setup.exe /s'
 
 
     - name: Build ROM
