@@ -15,13 +15,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: msys2/setup-msys2@v2
-      with:
-        path-type: inherit
-        update: true
-        install: >-
-          base-devel
-          git
+    # - uses: msys2/setup-msys2@v2
+    #   with:
+    #     path-type: inherit
+    #     update: true
+    #     install: >-
+    #       base-devel
+    #       git
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -36,18 +36,22 @@ jobs:
         fetch-depth: 0
 
     - name: Build ROM
-      shell: msys2 {0}
+      # shell: msys2 {0}
+      shell: cmd
       working-directory: ${{ github.workspace }}/240psuite/SNES/240pSuite/
       env:
         DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK
         DEVKIT65XX: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes
+        DEVKIT65XX_WIN: D:\a\240pTestSuite\240pTestSuite\240psuite\SNES\snesSDK\devkitsnes
       run: |
-        echo "default path:"
-        echo $PATH
-        export PATH=D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes/bin:$PATH
-        echo "new path:"
-        echo $PATH
-        echo "start build:"
+        # echo "default path:"
+        # echo $PATH
+        # export PATH=D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes/bin:$PATH
+        # echo "new path:"
+        # echo $PATH
+        # echo "start build:"
+
+        PATH %DEVKIT65XX_WIN%\bin;%PATH%
         make
 
     - name: "Upload built ROMs to artifacts"

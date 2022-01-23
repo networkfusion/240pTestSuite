@@ -38,7 +38,7 @@ CFLAGS	+=	$(INCLUDE)
 LIBDIRS	:=	$(PVSNESLIB)
 #LIBOBJS +:=	
  
-export OUTPUT	:=	$(CURDIR)/$(TARGET)
+export OUTPUT	?=	$(CURDIR)/$(TARGET)
  
 CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.asm)))
@@ -74,7 +74,8 @@ all	:	bitmaps $(OUTPUT).sfc
 	
 clean:
 	@echo clean ...
-	@rm -f $(OFILES) $(TARGET).sfc $(TARGET)-PAL.sfc $(TARGET).sym *.pic *.map *.pal *.brr *.bnk soundbank.asm soundbank.h *pc7 *.mp7
+# TODO make cross compatible?!
+	@rm $(OFILES) $(TARGET).sfc $(TARGET)-PAL.sfc $(TARGET).sym *.pic *.map *.pal *.brr *.bnk soundbank.asm soundbank.h *pc7 *.mp7
 
 #---------------------------------------------------------------------------------
 
