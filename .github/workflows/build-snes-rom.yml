@@ -42,9 +42,16 @@ jobs:
         DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK
         DEVKIT65XX: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes
       run: |
-        # echo "C:\directory\to\add\to\path" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "${DEVKITSNES}/bin" >> $GITHUB_PATH
-        # PATH %DEVKITSNES%\bin;%PATH%
+        echo "default path:"
+        echo $PATH
+        echo "gh path:"
+        echo $GITHUB_PATH
+        echo "Add path..."
+        ${DEVKITSNES}/bin >> $GITHUB_PATH
+        echo "new default path"
+        echo $PATH
+        echo "new gh path"
+        echo $GITHUB_PATH
         make
 
     - name: "Upload built ROMs to artifacts"
