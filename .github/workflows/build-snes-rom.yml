@@ -31,7 +31,9 @@ jobs:
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
-        repository: ArtemioUrbina/pvsneslib-240ptestsuite-fork
+        # repository: ArtemioUrbina/pvsneslib-240ptestsuite-fork
+        repository: alekmaul/pvsneslib
+        ref: f128d1faab77250797057e936c14967c5380c7b4
         path: 240psuite/SNES/snesSDK/
         fetch-depth: 0
 
