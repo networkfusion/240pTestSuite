@@ -38,7 +38,7 @@ jobs:
       shell: msys2 {0}
       working-directory: ${{ github.workspace }}/240psuite/SNES/240pSuite/
       env:
-        DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/
+        DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK
         DEVKIT65XX: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes
       run: |
         make
