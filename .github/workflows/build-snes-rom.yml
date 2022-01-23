@@ -35,6 +35,10 @@ jobs:
         path: 240psuite/SNES/snesSDK/
         fetch-depth: 0
 
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '2.7'
+
     - name: Build ROM
       # shell: msys2 {0}
       shell: cmd
@@ -52,6 +56,7 @@ jobs:
         # echo "start build:"
 
         PATH %DEVKIT65XX_WIN%\bin;%PATH%
+        # seems to require Python27 (not good!)
         make
 
     - name: "Upload built ROMs to artifacts"
