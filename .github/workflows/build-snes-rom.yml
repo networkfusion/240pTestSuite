@@ -15,9 +15,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
+
+    - name: Add system paths
+      shell: cmd
+      run: PATH D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/devkitsnes/bin;%PATH%
+
     - uses: msys2/setup-msys2@v2
       with:
-        # path-type: inherit
+        path-type: inherit
         update: true
         install: >-
           base-devel
@@ -44,10 +49,7 @@ jobs:
       run: |
         echo "default path:"
         echo $PATH
-        echo "Add path..."
-        $DEVKITSNES/bin >> $PATH
-        echo "new default path"
-        echo $PATH
+        echo "start build:"
         make
 
     - name: "Upload built ROMs to artifacts"
