@@ -15,6 +15,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - uses: msys2/setup-msys2@v2
+      with:
+        update: true
+        install: >-
+          base-devel
+          git
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -27,15 +34,8 @@ jobs:
         path: 240psuite/SNES/snesSDK/
         fetch-depth: 0
 
-    - name: Check SDK install DIR
-      working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/
-      run: |
-        ls
-        cd ./devkitsnes
-        ls
-
     - name: Build ROM
-      shell: cmd
+      shell: msys2 {0}
       working-directory: ${{ github.workspace }}/240psuite/SNES/240pSuite/
       env:
         DEVKITSNES: D:/a/240pTestSuite/240pTestSuite/240psuite/SNES/snesSDK/
