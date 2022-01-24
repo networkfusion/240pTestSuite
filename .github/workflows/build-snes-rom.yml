@@ -41,6 +41,15 @@ jobs:
       with:
         python-version: '2.7'
 
+    - name: Setup SDK
+      shell: bash
+      working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/bin/
+      run: |
+        # convert line endings to unix
+        sed -i -e 's/\r$//' 816-opt.py
+        sed -i -e 's/^M$//' 816-opt.py
+
+
     - name: Build ROM
       # shell: msys2 {0}
       shell: cmd
@@ -56,7 +65,7 @@ jobs:
         # echo "new path:"
         # echo $PATH
         # echo "start build:"
-
+        
         PATH %DEVKIT65XX_WIN%\bin;%PATH%
         # seems to require Python27 (not good!)
         make
