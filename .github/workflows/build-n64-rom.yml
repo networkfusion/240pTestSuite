@@ -50,8 +50,8 @@ jobs:
     - name: Build ROM
       working-directory: ${{ github.workspace }}/source/240psuite/N64/
       run: |
-        #libdragon make
-        cd ./source/240psuite/N64/
+        # libdragon make
+        # cd ./source/240psuite/N64/
         make
 
     - name: "Upload built ROMs to artifacts"
