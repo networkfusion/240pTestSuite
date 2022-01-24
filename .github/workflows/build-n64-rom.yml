@@ -25,6 +25,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: dragonminded/libdragon
+        ref: 'd11651c68e3e8ff1aba7d2b3a6c75c2d0c169b33'
         path: libdragon
         fetch-depth: 0
 
@@ -39,7 +40,7 @@ jobs:
         echo "copy finished!"
         # Rebuild libdragon for changed source
         cd ./libdragon
-        make
+        make libdragon
         make install
         # libdragon make
         # libdragon make install
