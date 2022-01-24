@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: anacierdem/libdragon:latest
+    container: networkfusion/libdragon:latest
 
     steps:
     - name: Checkout
@@ -29,13 +29,13 @@ jobs:
         fetch-depth: 0
 
     - name: Adjust and re-build libdragon source
-      working-directory: ${{ github.workspace }}/libdragon/
+      working-directory: ${{ github.workspace }}
       run: |
         # Copy the adjusted source into the ./libdragon folder
-        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/display.c ${{ github.workspace }}/libdragon/src
-        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/graphics.c ${{ github.workspace }}/libdragon/src
-        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/display.h ${{ github.workspace }}/libdragon/include
-        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/font.h ${{ github.workspace }}/libdragon/include
+        cp -f ./source/240psuite/N64/libdragonchanges/display.c /libdragon/src
+        cp -f ./source/240psuite/N64/libdragonchanges/graphics.c /libdragon/src
+        cp -f ./source/240psuite/N64/libdragonchanges/display.h /libdragon/include
+        cp -f ./source/240psuite/N64/libdragonchanges/font.h /libdragon/include
         # Rebuild libdragon for changed source
         libdragon make
         libdragon make install
