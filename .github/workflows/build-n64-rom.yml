@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: anacierdem/libdragon:5a27b95d58b33c79bd277cf392c0830b7084d0c5
+    container: anacierdem/libdragon:latest
 
     steps:
     - name: Checkout
