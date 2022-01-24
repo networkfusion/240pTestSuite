@@ -13,21 +13,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: anacierdem/libdragon:5a27b95d58b33c79bd277cf392c0830b7084d0c5
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
         fetch-depth: 0
-
-    - name: Install libDragon Container
-      run: |
-        npm i -g libdragon@latest
-
-    - name: Install libDragon source to root directory
-      run: |
-        libdragon init
+    - name: Checkout sdk repo
+      uses: actions/checkout@v2
+      with:
+        repository: dragonminded/libdragon
+        path: libdragon
+        fetch-depth: 0
 
     - name: Adjust and re-build libdragon source
+      working-directory: ${{ github.workspace }}/libdragon/
       run: |
         # Copy the adjusted source into the ./libdragon folder
         cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/display.c ${{ github.workspace }}/libdragon/src
@@ -35,14 +36,13 @@ jobs:
         cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/display.h ${{ github.workspace }}/libdragon/include
         cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/font.h ${{ github.workspace }}/libdragon/include
         # Rebuild libdragon for changed source
-        cd ${{ github.workspace }}/libdragon/
         libdragon make
         libdragon make install
         # libdragon make tools-install # the tools are default so commmented out.
 
     - name: Build ROM
+      working-directory: ${{ github.workspace }}/240psuite/N64/
       run: |
-        cd ${{ github.workspace }}/240psuite/N64/
         libdragon make
 
     - name: "Upload built ROMs to artifacts"
