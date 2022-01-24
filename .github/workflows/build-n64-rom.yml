@@ -36,15 +36,21 @@ jobs:
         cp -f ./source/240psuite/N64/libdragonchanges/graphics.c ./libdragon/src
         cp -f ./source/240psuite/N64/libdragonchanges/display.h ./libdragon/include
         cp -f ./source/240psuite/N64/libdragonchanges/font.h ./libdragon/include
+        echo "copy finished!"
         # Rebuild libdragon for changed source
+        cd ./libdragon
+        make
+        make install
         # libdragon make
-        libdragon make install
+        # libdragon make install
         # libdragon make tools-install # the tools are default so commmented out.
 
     - name: Build ROM
       working-directory: ${{ github.workspace }}/source/240psuite/N64/
       run: |
-        libdragon make
+        #libdragon make
+        cd ./source/240psuite/N64/
+        make
 
     - name: "Upload built ROMs to artifacts"
       uses: actions/upload-artifact@v2
