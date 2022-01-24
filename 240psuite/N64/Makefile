@@ -13,11 +13,13 @@ TOOLDIR = $(ROOTDIR)/bin
 UCON64 = $(TOOLDIR)/ucon64
 LOADER = $(TOOLDIR)/unfloader
 
-LDFLAGS = -Tn64.ld --gc-sections
+LIBDRAGON_LIB_DIR ?= $(CURDIR)/lib
 
-LIBPATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/mips64-elf/lib
-INCPATH = -I$(CURDIR)/include -I$(ROOTDIR)/include -I$(ROOTDIR)/mips64-elf/include
-CCFLAGS = -std=gnu99 -march=vr4300 -mtune=vr4300 -G0 -O2 -Werror -c $(INCPATH)
+LINKER_FILE = -Tn64.ld
+
+LIB_PATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/mips64-elf/lib
+INC_PATH = -I$(CURDIR)/include -I$(ROOTDIR)/include -I$(ROOTDIR)/mips64-elf/include
+CCFLAGS = -std=gnu99 -march=vr4300 -mtune=vr4300 -G0 -O2 -Werror -c $(INC_PATH)
 ASFLAGS = -mtune=vr4300 -march=vr4300
 
 N64PREFIX = $(ROOTDIR)/bin/mips64-elf-
@@ -39,7 +41,7 @@ $(PROG_NAME).z64: bitmaps $(PROG_NAME).elf drive.dfs
 	$(CHKSUM64) $(PROG_NAME).z64
 
 $(PROG_NAME).elf : $(OBJS)
-	$(LD) -o $(PROG_NAME).elf $(OBJS) $(LDFLAGS) $(LIBPATH) $(LIBS)
+	$(LD) -o $(PROG_NAME).elf $(OBJS) $(LINKER_FILE) $(LIB_PATH) $(LIBS)
 
 drive.dfs: bitmaps
 	$(MKDFS) drive.dfs ./filesystem/
