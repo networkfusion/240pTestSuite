@@ -48,10 +48,11 @@ jobs:
         # libdragon make tools-install # the tools are default so commmented out.
 
     - name: Build ROM
-      working-directory: ${{ github.workspace }}/source/240psuite/N64/
+      # working-directory: ${{ github.workspace }}/source/240psuite/N64/
       run: |
         # libdragon make
-        # cd ./source/240psuite/N64/
+        cd ./source/240psuite/N64/
+        ls
         make
 
     - name: "Upload built ROMs to artifacts"
