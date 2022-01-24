@@ -13,31 +13,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: anacierdem/libdragon:latest
+    container: networkfusion/libdragon:win-cross-compile
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        path: ${{ github.workspace }}/source
+        path: source
         fetch-depth: 0
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
         repository: dragonminded/libdragon
-        path: ${{ github.workspace }}/libdragon
+        path: libdragon
         fetch-depth: 0
 
     - name: Adjust and re-build libdragon source
       working-directory: ${{ github.workspace }}
       run: |
         # Copy the adjusted source into the ./libdragon folder
-        cp -f ./source/240psuite/N64/libdragonchanges/display.c /libdragon/src
-        cp -f ./source/240psuite/N64/libdragonchanges/graphics.c /libdragon/src
-        cp -f ./source/240psuite/N64/libdragonchanges/display.h /libdragon/include
-        cp -f ./source/240psuite/N64/libdragonchanges/font.h /libdragon/include
+        cp -f /source/240psuite/N64/libdragonchanges/display.c /libdragon/src
+        cp -f /source/240psuite/N64/libdragonchanges/graphics.c /libdragon/src
+        cp -f /source/240psuite/N64/libdragonchanges/display.h /libdragon/include
+        cp -f /source/240psuite/N64/libdragonchanges/font.h /libdragon/include
         # Rebuild libdragon for changed source
-        libdragon make
+        #libdragon make
         libdragon make install
         # libdragon make tools-install # the tools are default so commmented out.
 
