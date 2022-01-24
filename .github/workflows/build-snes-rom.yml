@@ -50,7 +50,7 @@ jobs:
         sed -i -e 's/^M$//' 816-opt.py
         # pythonLocation: C:\hostedtoolcache\windows\Python\2.7.18\x64
         sed -i 's+#!/c/Python27/python+#!/bin/sh+g' 816-opt.py
-        sudo chmod +rwx 816-opt.py
+        chmod +rwx 816-opt.py
 
 
     - name: Build ROM
