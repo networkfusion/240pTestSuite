@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: DragonMinded/libdragon
-        ref: 'd059cf5b5008e6341ec079b99f5d398948037467'
+        ref: '1557cd8e237c436546a04e73f3518e31286e80a2' #6 Oct 2019 before disruptive changes!
         path: libdragon
         fetch-depth: 0
 
