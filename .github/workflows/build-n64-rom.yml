@@ -32,10 +32,10 @@ jobs:
       run: |
         ls
         # Copy the adjusted source into the /libdragon folder
-        cp -f /source/240psuite/N64/libdragonchanges/display.c /libdragon/src
-        cp -f /source/240psuite/N64/libdragonchanges/graphics.c /libdragon/src
-        cp -f /source/240psuite/N64/libdragonchanges/display.h /libdragon/include
-        cp -f /source/240psuite/N64/libdragonchanges/font.h /libdragon/include
+        cp -f ./source/240psuite/N64/libdragonchanges/display.c ./libdragon/src
+        cp -f ./source/240psuite/N64/libdragonchanges/graphics.c ./libdragon/src
+        cp -f ./source/240psuite/N64/libdragonchanges/display.h ./libdragon/include
+        cp -f ./source/240psuite/N64/libdragonchanges/font.h ./libdragon/include
         # Rebuild libdragon for changed source
         # libdragon make
         libdragon make install
