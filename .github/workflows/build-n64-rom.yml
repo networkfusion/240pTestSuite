@@ -19,6 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
+        path: source
         fetch-depth: 0
     - name: Checkout sdk repo
       uses: actions/checkout@v2
@@ -31,17 +32,17 @@ jobs:
       working-directory: ${{ github.workspace }}/libdragon/
       run: |
         # Copy the adjusted source into the ./libdragon folder
-        cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/display.c ${{ github.workspace }}/libdragon/src
-        cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/graphics.c ${{ github.workspace }}/libdragon/src
-        cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/display.h ${{ github.workspace }}/libdragon/include
-        cp -f ${{ github.workspace }}/240psuite/N64/libdragonchanges/font.h ${{ github.workspace }}/libdragon/include
+        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/display.c ${{ github.workspace }}/libdragon/src
+        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/graphics.c ${{ github.workspace }}/libdragon/src
+        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/display.h ${{ github.workspace }}/libdragon/include
+        cp -f ${{ github.workspace }}/source/240psuite/N64/libdragonchanges/font.h ${{ github.workspace }}/libdragon/include
         # Rebuild libdragon for changed source
         libdragon make
         libdragon make install
         # libdragon make tools-install # the tools are default so commmented out.
 
     - name: Build ROM
-      working-directory: ${{ github.workspace }}/240psuite/N64/
+      working-directory: ${{ github.workspace }}/source/240psuite/N64/
       run: |
         libdragon make
 
