@@ -42,7 +42,8 @@ jobs:
         python-version: '2.7'
 
     - name: Setup SDK
-      working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/bin/
+      shell: bash
+      working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/devkitsnes/bin/
       run: |
         # convert line endings to unix
         sed -i -e 's/\r$//' 816-opt.py
