@@ -15,7 +15,7 @@ LOADER = $(TOOLDIR)/unfloader
 
 LIBDRAGON_LIB_DIR ?= $(CURDIR)/lib
 
-LINKER_FILE = -Tn64.ld
+LINKER_FILE = -Tn64.ld -nostdlib
 
 LIB_PATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/mips64-elf/lib
 INC_PATH = -I$(CURDIR)/include -I$(ROOTDIR)/include -I$(ROOTDIR)/mips64-elf/include

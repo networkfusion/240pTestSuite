@@ -54,7 +54,7 @@ jobs:
       run: |
         # libdragon make
         cd ./source/240psuite/N64/
-
+        # DEBUG_BENCHMARK
         make
 
     - name: "Upload built ROMs to artifacts"

@@ -153,7 +153,7 @@ int isNTSC()
 {
 	int tv; 
 	
-	tv = *(int *) 0x80000300;
+	tv = *(int *) 0x80000300; //Correct: tv = *(unsigned long *) 0x80000300;
 	return tv;
 }
 
