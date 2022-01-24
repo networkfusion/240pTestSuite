@@ -11,7 +11,7 @@ MKSPRITE =  $(TOOLDIR)/mksprite
 UCON64 = $(TOOLDIR)/ucon64
 LOADER = $(TOOLDIR)/loader64
 
-LDSCRIPTSDIR = $(ROOTDIR)/ldscripts
+LDSCRIPTSDIR = $(ROOTDIR)
 LINK_FLAGS = -T$(LDSCRIPTSDIR)/n64.ld -Map map.txt -nostdlib
 
 LIBPATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/lib/gcc/mips64-elf/4.4.0 -L$(ROOTDIR)/mips64-elf/lib
