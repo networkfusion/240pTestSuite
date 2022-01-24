@@ -15,7 +15,7 @@ LOADER = $(TOOLDIR)/unfloader
 
 LIBDRAGON_LIB_DIR ?= $(CURDIR)/lib
 
-LINKER_FILE = -Tn64.ld -nostdlib
+LINKER_FILE = -Tn64.ld
 
 LIB_PATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/mips64-elf/lib
 INC_PATH = -I$(CURDIR)/include -I$(ROOTDIR)/include -I$(ROOTDIR)/mips64-elf/include
@@ -29,7 +29,7 @@ LD = $(N64PREFIX)ld
 OBJCOPY = $(N64PREFIX)objcopy
 
 PROG_NAME = 240pSuite
-LIBS = -ldragon -lc -lm -ldragonsys
+LIBS = -ldragon -lc -lm -nostdlib
 BITDEPTH = 16
 
 OBJS = $(PROG_NAME).o utils.o image.o video.o tests.o patterns.o controller.o menu.o help.o
