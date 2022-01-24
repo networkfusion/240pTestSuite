@@ -9,11 +9,11 @@ MKDFS = $(N64_BINDIR)/mkdfs
 N64TOOL = $(N64_BINDIR)/n64tool
 MKSPRITE =  $(N64_BINDIR)/mksprite
 
-TOOLDIR = $(CURDIR)/tools
+TOOLDIR = $(ROOTDIR)/bin
 UCON64 = $(TOOLDIR)/ucon64
 LOADER = $(TOOLDIR)/unfloader
 
-LDFLAGS = -Tn64.ld -Map map.txt --gc-sections
+LDFLAGS = -Tn64.ld --gc-sections
 
 LIBPATH = -L$(ROOTDIR)/lib -L$(ROOTDIR)/mips64-elf/lib
 INCPATH = -I$(CURDIR)/include -I$(ROOTDIR)/include -I$(ROOTDIR)/mips64-elf/include

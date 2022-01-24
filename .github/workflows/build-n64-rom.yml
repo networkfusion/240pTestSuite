@@ -41,6 +41,7 @@ jobs:
         cd ./libdragon
         # For the moment, just ignore warnings (although valid!)
         sed -i 's/-std=gnu99 -O2 -Wall -Werror/-std=gnu99 -O2 -Werror/g' Makefile
+        make clean
         make libdragon
         make install
         # Install the SDK tools
