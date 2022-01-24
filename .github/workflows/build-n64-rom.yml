@@ -19,13 +19,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        path: source
+        path: ${{ github.workspace }}/source
         fetch-depth: 0
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
         repository: dragonminded/libdragon
-        path: libdragon
+        path: ${{ github.workspace }}/libdragon
         fetch-depth: 0
 
     - name: Adjust and re-build libdragon source
