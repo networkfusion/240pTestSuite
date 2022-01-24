@@ -42,7 +42,6 @@ jobs:
         python-version: '2.7'
 
     - name: Setup SDK
-      shell: bash
       working-directory: ${{ github.workspace }}/240psuite/SNES/snesSDK/bin/
       run: |
         # convert line endings to unix
