@@ -24,8 +24,8 @@ jobs:
     - name: Checkout sdk repo
       uses: actions/checkout@v2
       with:
-        repository: dragonminded/libdragon
-        ref: '92feeeb9b7d2c03d434a5bee00e82c52159a9a0b' #2020/06/25 last known success!
+        repository: n64-tools/libdragon
+        ref: '877bd3a66441fcde7b1972d00ac78f552c2592b5' #2020/06/19 last known success! https://github.com/N64-tools/libdragon/commit/877bd3a66441fcde7b1972d00ac78f552c2592b5
         path: libdragon
         fetch-depth: 0
 
