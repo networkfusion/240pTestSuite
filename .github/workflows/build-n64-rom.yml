@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: n64-tools/libdragon
-        ref: '877bd3a66441fcde7b1972d00ac78f552c2592b5' #2020/06/19 last known success! https://github.com/N64-tools/libdragon/commit/877bd3a66441fcde7b1972d00ac78f552c2592b5
+        ref: 'b1b3d104f91c1c74147a36a86ea85190624d81f9' #2020/08/05 last known success! https://github.com/N64-tools/libdragon/commit/b1b3d104f91c1c74147a36a86ea85190624d81f9
         path: libdragon
         fetch-depth: 0
 
