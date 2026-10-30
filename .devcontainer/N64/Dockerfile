@@ -1,9 +1,9 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install build-essential doxygen git python3 wget -y && \
-    wget https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb && \
+    wget https://github.com/n64brew/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb && \
     dpkg -i gcc-toolchain-mips64-x86_64.deb && \
     rm gcc-toolchain-mips64-x86_64.deb && \
     git config --global --add safe.directory "*" && \
